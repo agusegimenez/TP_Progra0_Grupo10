@@ -122,3 +122,24 @@ for i in range(total_ventas):
   datos_ventas.append(registrar_venta())
 
 print("Datos de ventas ingresados exitosamente:", datos_ventas)
+
+
+
+#CUARTO BLOQUE
+def calcular_promedio(datos_ventas):
+    total_precio = 0
+    num_ventas = 0
+
+    for venta in datos_ventas: 
+        producto_precio = venta[2]  # precio del producto
+        total_precio += producto_precio 
+        num_ventas += 1  #total de ventas
+
+    if num_ventas > 0:
+        promedio = total_precio / num_ventas  # calcula el promedio
+        return promedio
+    else:
+        return 0
+
+prom = calcular_promedio(datos_ventas)
+print("El promedio de precios es de:", prom)

@@ -82,11 +82,25 @@ def registrar_venta():
     print("El ID del producto debe ser un número mayor a cero.")
     producto_id = int(input("Ingrese el identificador del producto (número entero): "))
 
-  producto_categoria = input("Ingrese la categoría del producto: ")
-  while producto_categoria == "":
-    print("La categoría no puede estar vacía.")
-    producto_categoria = input("Ingrese la categoría del producto: ")
+    # CATEGORÍAS
+    print("Seleccione la categoría del producto:")
+    print("1. Entretenimiento")
+    print("2. Moda")
+    print("3. Electrónica")
 
+    producto_categoria = int(input("Ingrese el número de la categoría: "))
+    while producto_categoria != 1 and producto_categoria != 2 and producto_categoria != 3:
+        print("Categoría no válida. Seleccione una de las opciones disponibles.")
+        producto_categoria = int(input("Ingrese el número de la categoría: "))
+    
+    # Asignamos el nombre de la categoria seleccionada
+    if producto_categoria == 1:
+        categoria_nombre = "Entretenimiento"
+    elif producto_categoria == 2:
+        categoria_nombre = "Moda"
+    elif producto_categoria == 3:
+        categoria_nombre = "Electrónica"
+        
   producto_precio = float(input("Precio unitario del producto (en formato decimal): "))
   while producto_precio <= 0:
     print("El precio debe ser un valor positivo.")

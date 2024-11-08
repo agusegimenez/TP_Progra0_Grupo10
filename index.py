@@ -1,7 +1,7 @@
 # -------------- UTILS ---------------
 
 def es_anio_bisiesto(anio):
-  #un año es bisiesto si es divible por 4 o por 100 y 400
+  # UN AÑO ES BISIESTO SI ES DIVIBLE POR 4 O POR 100 Y 400
   if anio % 4 != 0:
     return False
   elif anio % 100 == 0 and anio % 400 == 0:
@@ -13,7 +13,7 @@ def calcular_dias_por_mes(anio, mes):
   dias_maximos = None
   es_mes_largo = mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 1 or mes == 12
 
-  #dependiendo del mes retorna el maximo de dias
+  # DEPENDIENDO DEL MES RETORNA EL MAXIMO DE DIAS
   if mes == 2:
     if es_anio_bisiesto(anio):
       dias_maximos = 29
@@ -27,19 +27,19 @@ def calcular_dias_por_mes(anio, mes):
   return dias_maximos
 
 def es_una_fecha_valida(fecha): 
-  # valida que la fecha tenga el formato correcto
+  # VALIDA QUE LA FECHA TENGA EL FORMATO CORRECTO
   if len(fecha) != 10 or fecha[2] != '-' or fecha[5] != '-':
     print("La fecha ingresa es incorrecta, el formato debe ser (dd-mm-aaaa)", fecha)
     return False
 
-  # extrae dia, mes, y año del array
+  # EXTRAE DIA, MES, Y AÑO DEL ARRAY
   dia = int(fecha[:2])
   mes = int(fecha[3:5])
   anio = int(fecha[6:])
 
-  # valida que el año sea maximo el actual
+  # VALIDA QUE EL AÑO SEA MAXIMO EL ACTUAL
   es_un_anio_valido = anio <= 2024
-  # valida que el  mes este entre 1 y 12
+  # VALIDA QUE EL  MES ESTE ENTRE 1 Y 12
   es_un_mes_valido = 1 <= mes <= 12
   
   if not es_un_anio_valido:
@@ -60,20 +60,20 @@ def es_una_fecha_valida(fecha):
       11. Noviembre,
       12. Diciembre
       ''')
+
     return False
 
-
-  # obtiene la cantidad de dias maximo, contemplando año bisiestos
+  # OBTIENE LA CANTIDAD DE DIAS MAXIMO, CONTEMPLANDO AÑO BISIESTOS
   dias_maximos = calcular_dias_por_mes(anio, mes)
 
-  # valida que el dia sea mayor a uno y menor o igual al maximo de dias del mes
+  # VALIDA QUE EL DIA SEA MAYOR A UNO Y MENOR O IGUAL AL MAXIMO DE DIAS DEL MES
   es_un_dia_valido = 1 <= dia <= dias_maximos
 
   if not es_un_dia_valido:
-      print("Numero de dia invalido, este mes solo tiene", dias_maximos, "dias")
-      return False
+    print("Numero de dia invalido, este mes solo tiene", dias_maximos, "dias")
+    return False
   else:
-      return True
+    return True
 
 
 # -------------- GET DATA ---------------

@@ -1,11 +1,8 @@
 def es_anio_bisiesto(anio):
-  #un año es bisiesto si es divible por 4 o por 100 y 400
-  if anio % 4 != 0:
-    return False
-  elif anio % 100 == 0 and anio % 400 == 0:
-    return True
-  else: 
-    return False
+    if anio % 4 == 0 and (anio % 100 != 0 or anio % 400 == 0):
+        return True
+    else:
+        return False
     
 def calcular_dias_por_mes(anio, mes):
   dias_maximos = None

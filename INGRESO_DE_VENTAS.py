@@ -83,10 +83,7 @@ def registrar_venta():
     producto_id = int(input("Ingrese el identificador del producto (número entero): "))
 
     # CATEGORÍAS
-    print("Seleccione la categoría del producto:")
-    print("1. Entretenimiento")
-    print("2. Moda")
-    print("3. Electrónica")
+    print("Seleccione la categoría del producto:\n1. Entretenimiento\n2. Moda\n3. Electrónica")
 
     producto_categoria = int(input("Ingrese el número de la categoría: "))
     while producto_categoria != 1 and producto_categoria != 2 and producto_categoria != 3:
@@ -98,7 +95,7 @@ def registrar_venta():
         categoria_nombre = "Entretenimiento"
     elif producto_categoria == 2:
         categoria_nombre = "Moda"
-    elif producto_categoria == 3:
+    else:
         categoria_nombre = "Electrónica"
         
   producto_precio = float(input("Precio unitario del producto (en formato decimal): "))

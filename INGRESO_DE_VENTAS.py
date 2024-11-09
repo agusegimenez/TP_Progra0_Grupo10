@@ -9,7 +9,7 @@ def es_anio_bisiesto(anio):
     
 def calcular_dias_por_mes(anio, mes):
   dias_maximos = None
-  es_mes_largo = mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 1 or mes == 12
+  es_mes_largo = mes == 1 or mes == 3 or mes == 5 or mes == 7 or mes == 8 or mes == 10 or mes == 12
 
   #dependiendo del mes retorna el maximo de dias
   if mes == 2:

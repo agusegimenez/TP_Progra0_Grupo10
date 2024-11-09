@@ -240,4 +240,72 @@ def calcular_ventas_por_categoria(ventas):
 
 # -------------- ORCHESTRATOR ---------------
 
-# Funcion que muestra el menu de opciones que puede realizar el usuario, las funciones que ejecuta retornan los datos y esta funcon, debe manejar los mensajes a mostrar
+def mostrar_menu():
+  print("\n" + "=" * 30)
+  print("           MENÚ PRINCIPAL")
+  print("=" * 30)
+  print("  1) 📥 Ingresar ventas")
+  print("  2) 💰 Ver total de ingresos generados")
+  print("  3) 📊 Ver productos vendidos por categoría")
+  print("  4) 📅 Ver promedio de ingresos diarios")
+  print("  5) ❌ Salir")
+  print("=" * 30)
+    
+  opcion = input("Seleccione una opción (1-5): ")
+  return opcion
+
+def ver_ganancias_generadas(ventas):
+    total_ingresos = obtener_ganancias_generadas(ventas)
+    print("\n" + "=" * 30)
+    print("         INGRESOS GENERADOS")
+    print("=" * 30)
+    print(f"Total de ingresos generados: ${total_ingresos}")
+    print("=" * 30)
+
+def ver_ventas_por_categoria(ventas):
+    ventas_por_categoria = calcular_ventas_por_categoria(ventas)
+    print("\n" + "=" * 30)
+    print("   VENTAS POR CATEGORIA")
+    print("=" * 30)
+    print(f"Ventas de entretenimiento: {ventas_por_categoria[0]}")
+    print(f"Ventas de moda: {ventas_por_categoria[1]}")
+    print(f"Ventas de electrónica: {ventas_por_categoria[2]}")
+    print("=" * 30)
+
+def ver_promedio(ventas):
+    promedio_ingresos = calcular_promedio(ventas)
+    print("\n" + "=" * 30)
+    print("  PROMEDIO DE INGRESOS DIARIOS")
+    print("=" * 30)
+    print(f"Promedio de ingresos generados por dia: ${promedio_ingresos}")
+    print("=" * 30)
+    
+def iniciar_orquestrador():  
+  ventas = []
+  corriendo = True
+  while corriendo:
+    opcion = mostrar_menu()
+    
+    if opcion == "1":
+      ventas.extend(ingresar_ventas()) # se agregan las ventas al array existente, por si el usuario quiere agregar mas ventas
+    elif opcion == "2":
+      ver_ganancias_generadas(ventas)
+    elif opcion == "3":
+      ver_ventas_por_categoria(ventas)
+    elif opcion == "4":
+      ver_promedio(ventas)
+    elif opcion == "5":
+      print("\n🔚 Saliendo del programa. Adios!")
+      corriendo = False
+    else:
+      print("\n⚠️ Opción no válida, por favor intente nuevamente.")
+
+
+
+#inicio del programa
+print("\n" + "=" * 30)
+print("           Bienvenido!")
+print(" Seleccione una opcion del menú")
+print("=" * 30)
+
+iniciar_orquestrador()

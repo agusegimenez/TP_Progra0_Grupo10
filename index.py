@@ -170,23 +170,49 @@ def registrar_venta():
   return nueva_venta
 
 def calcular_promedio(ventas):
-  precio_total = 0
-  num_ventas = 0
+  dias = [] 
+  total_ganancias = [] 
+  num_ventas = [] 
 
+  # ve si lista de ventas está vacía
   if not ventas or len(ventas) == 0:
     print('No existen ventas.')
     return 0
-  else:
-    for venta in ventas: 
-      producto_precio = venta[2] # EL INDICE 2 DE LA MATRIZ CORRESPONDE AL PRECIO DEL PRODUCTO
-      precio_total += producto_precio # INCREMENTA EL COTADOR DE PRECIO TOTAL 
-      num_ventas += 1  # INCREMENTA EL COTADOR DE VENTAS 
 
-    if num_ventas > 0:
-      promedio = precio_total / num_ventas  # CALCULAR PROMEDIO
-      return promedio
+  # se recorre ventas
+  for venta in ventas:
+    dia = venta[4]  # el día es la posición 4 de la lista
+    precio = venta[2]  # el precio es la posición 2
+    unidades_vendidas = venta[3]  # cantidad de unidades vendidas es la posición 3
+    
+    #total de ganancias
+    ganancias_venta = precio * unidades_vendidas
+
+    # verificamos si el día ya está en la lista de días
+    encontrado = False
+    for i in range(len(dias)):
+      if dias[i] == dia:  # si el día ya está en la lista
+        total_ganancias[i] += ganancias_venta  # se suman las ganancias
+        num_ventas[i] += unidades_vendidas  # y las unidades vendidas
+        encontrado = True
+        
+    # si el día no esta se agrega
+    if not encontrado:
+      dias.append(dia)
+      total_ganancias.append(ganancias_venta)
+      num_ventas.append(unidades_vendidas)
+
+  # calcula promedio de ventas por día 
+  promedio_por_dia = []
+  for i in range(len(dias)):
+    if num_ventas[i] > 0:
+      promedio = total_ganancias[i] / num_ventas[i]  # promedio x venta
     else:
-      return 0
+      promedio = 0
+    promedio_por_dia.append((dias[i], promedio))
+
+    return promedio_por_dia
+   
 
 def obtener_ganancias_generadas(ventas):
   # INICIALIZA CONTADORES

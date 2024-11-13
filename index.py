@@ -211,7 +211,7 @@ def calcular_promedio(ventas):
       promedio = 0
     promedio_por_dia.append((dias[i], promedio))
 
-    return promedio_por_dia
+  return promedio_por_dia
    
 
 def obtener_ganancias_generadas(ventas):
@@ -305,11 +305,12 @@ Ventas de electrónica: {ventas_por_categoria[2]}
 def ver_promedio(ventas):
     promedio_ingresos = calcular_promedio(ventas)
     print(f"""
-==============================
-  PROMEDIO DE INGRESOS DIARIOS
-==============================
-Promedio de ingresos generados por dia: ${promedio_ingresos}
+  ==============================
+    PROMEDIO DE INGRESOS DIARIOS
 ==============================""")
+    for promedio_dia in promedio_ingresos:
+      print(f"{promedio_dia[0]}: {promedio_dia[1]}")
+
     
 def iniciar_orquestrador():  
   ventas = []
@@ -324,7 +325,7 @@ def iniciar_orquestrador():
     elif opcion == "3":
       ver_ventas_por_categoria(ventas)
     elif opcion == "4":
-      ver_promedio(ventas)
+       ver_promedio(ventas)
     elif opcion == "5":
       print("\n🔚 Saliendo del programa. Adios!")
     else:
